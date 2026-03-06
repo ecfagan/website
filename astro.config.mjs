@@ -1,5 +1,6 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  site: 'https://ecfagan.github.io/website/', // your GitHub Pages URL
+  base: '/website/', // the repository name
+});
