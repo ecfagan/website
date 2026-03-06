@@ -14,6 +14,8 @@ permissions:
   pages: write
   id-token: write
 
+# ... (keep everything the same at the top)
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,16 +24,18 @@ jobs:
         uses: actions/checkout@v5
       - name: Install, build, and upload your site
         uses: withastro/action@v5
-        # with:
-          # path: . # The root location of your Astro project inside the repository. (optional)
-          # node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 22. (optional)
-          # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
-          # build-cmd: pnpm run build # The command to run to build your site. Runs the package build script/task by default. (optional)
-        # env:
-          # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Use single quotation marks for the variable value. (optional)
+        with:
+          # If you have specific versions, you can add them here
+          node-version: 22
+        env:
+          # This maps your GitHub Secrets to the variables Astro is looking for
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
 
   deploy:
     needs: build
+# ... (keep the rest of the file the same)
     runs-on: ubuntu-latest
     environment:
       name: github-pages
