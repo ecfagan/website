@@ -4,6 +4,12 @@ const clientID = import.meta.env.STRAVA_CLIENT_ID;
 const clientSecret = import.meta.env.STRAVA_CLIENT_SECRET;
 const refreshToken = import.meta.env.STRAVA_REFRESH_TOKEN;
 
+console.log("--- DEBUG START ---");
+console.log("ID Check:", clientID ? "Value exists" : "MISSING");
+console.log("Secret Check:", clientSecret ? "Value exists" : "MISSING");
+console.log("Token Check:", refreshToken ? "Value exists" : "MISSING");
+console.log("--- DEBUG END ---");
+
 type StravaActivity = {
   name: string;
   type: string;
